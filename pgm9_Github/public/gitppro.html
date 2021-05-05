@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        * {
+            /* background-image: linear-gradient( #FF9F4A, #FF3C83); */
+            background-color: #0D0D0D;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+    <body>
+        <center>
+            <span style="float: left; margin-left: 100px; padding-bottom: 5px;">
+                <h1>Github Profile</h1>
+                <!-- <label name="l1" value="user id">Enter git user id</label><br><br> -->
+                <input type="text" id="text_input" placeholder="enter git user name"><br><br>
+                <input type="button" onclick="gitdata()" value="get profile"><br><br>
+                <div id='git_image' style="padding-bottom: 5px;">
+                    <img src="" alt="profile image" id="image"><br>
+                    <p id='para'></p>
+                    <label>Login: <label id="login"></label>  </label> <br> <br>
+                    <label>Id: <label id="id"></label> </label><br><br>
+                    <label >Public repo:<label id="prepo"></label> </label><br><br>
+                    <label >Fllowers:<label id="floowers"></label> </label><br><br>
+                    <label >Following:<label id="flowing"></label> </label><br><br>
+
+                </div>
+            </span>
+            <span style="float: right; padding-right: 25    0px; margin-top: 100px;">
+                <label >node id:<label id="node"></label> </label><br><br>
+                <label >avatart url:<label id="aurl"></label> </label><br><br>
+                <label >url:<label id="url"></label> </label><br><br>
+                <label >html url:<label id="hurl"></label> </label><br><br>
+                <label >followers url:<label id="furl"></label> </label><br><br>
+                <label >following url:<label id="fourl"></label> </label><br><br>
+                <!-- <label >gists url:<label id="gurl"></label> </label><br><br>
+                <label >starred url:<label id="surl"></label> </label><br><br>
+                <label >subscription url:<label id="sburl"></label> </label><br><br>
+                <label >organization url:<label id="ourl"></label> </label><br><br> -->
+                <label >Name:<label id="name1"></label> </label><br><br>
+                <label >Blog:<label id="blog"></label> </label><br><br>
+                <label >location:<label id="loc"></label> </label><br><br>
+                <label >email:<label id="email"></label> </label><br><br>
+                <label >twitter username:<label id="tuser"></label> </label><br><br>
+                <label >Created at:<label id="ct"></label> </label><br><br>
+                <label >Updated at:<label id="ut"></label> </label><br><br>
+                
+
+            </span>
+        </center>
+    </body>
+<script>
+    function gitdata(){
+
+    var url='https://api.github.com/users/'+document.getElementById('text_input').value;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.avatar_url)
+        var im = document.getElementById("image");
+        im.setAttribute("src",data.avatar_url);
+        
+        var gi= document.getElementById('para');
+        // gi.innerHTML=JSON.stringify(data);
+        var login = document.getElementById('login');
+        login.innerHTML=JSON.stringify(data.login);
+        var id = document.getElementById('id');
+        id.innerHTML = JSON.stringify(data.id);
+        var node = document.getElementById('node');
+        node.innerHTML = JSON.stringify(data.node_id);
+        var aurl = document.getElementById('aurl');
+        aurl.innerHTML = JSON.stringify(data.avatar_url);
+        var url = document.getElementById('url');
+        url.innerHTML = JSON.stringify(data.url);
+        var hurl = document.getElementById('hurl');
+        hurl.innerHTML = JSON.stringify(data.html_url);
+        var furl = document.getElementById('furl');
+        furl.innerHTML = JSON.stringify(data.followers_url);
+        var fourl = document.getElementById('fourl');
+        fourl.innerHTML = JSON.stringify(data.following_url);
+        var name1 = document.getElementById('name1');
+        name1.innerHTML = JSON.stringify(data.name);
+        var blog = document.getElementById('blog');
+        blog.innerHTML = JSON.stringify(data.blog);
+        var location = document.getElementById('loc');
+        location.innerHTML = JSON.stringify(data.location);
+        var email = document.getElementById('email');
+        email.innerHTML = JSON.stringify(data.email);
+        var tuser = document.getElementById('tuser');
+        tuser.innerHTML = JSON.stringify(data.twitter_username);    
+        var ct = document.getElementById('ct');
+        ct.innerHTML = JSON.stringify(data.created_at);  
+        var ut = document.getElementById('ut');
+        ut.innerHTML = JSON.stringify(data.updated_at);  
+        var prepo = document.getElementById('prepo');
+        prepo.innerHTML = JSON.stringify(data.public_repos);  
+        var floowers = document.getElementById('floowers');
+        floowers.innerHTML = JSON.stringify(data.followers);  
+        var flowing = document.getElementById('flowing');
+        flowing.innerHTML = JSON.stringify(data.following);  
+        
+    })
+
+    .catch(function(response){
+        return response.status;
+        console.log(response.status);
+    });;
+    
+}
+</script>
+</html>

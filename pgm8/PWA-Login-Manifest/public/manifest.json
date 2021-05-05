@@ -1,0 +1,56 @@
+{
+    "name":"Login Form",
+    "short_name": "Login",
+    "description":"Login Progressive Web App",
+    "start_url": "/index.html",
+    "display" : "standalone",
+    "theme_color":"#FF6263",
+    "background_color":"#CAD5E2",
+    "scope":"/",
+    "lang":"en-US",
+    "orientation":"landscape",
+    "icons":[
+      {
+        "src":"images/icons/icons8-apple-logo-30.svg",
+        "sizes":"30x30",
+        "type":"image/svg"
+      },
+      {
+        "src":"images/icons/icons8-apple-logo-60.svg",
+        "sizes":"60x60",
+        "type":"image/svg"
+      },
+      {
+        "src":"images/icons/icons8-apple-logo-90.svg",
+        "sizes":"90x90",
+        "type":"image/svg"
+      },
+      {
+        "src":"images/icons/icons8-apple-logo-120.svg",
+        "sizes":"120x120",
+        "type":"image/svg"
+      },
+      {
+        "src":"images/icons/icons8-apple-logo-240.svg",
+        "sizes":"240x240",
+        "type":"image/svg"
+      },
+      {
+        "src":"images/icons/icons8-apple-logo-480.svg",
+        "sizes":"480x480",
+        "type":"image/svg"
+      },
+      {
+        "src":"images/icons/icons8-airdrop-384.png",
+        "sizes":"384x384",
+        "type":"image/png"
+      },
+      {
+        "src":"images/icons/icons8-apple-logo-512.svg",
+        "sizes":"512x512",
+        "type":"image/svg"
+      }
+    ],
+  
+    "splash_pages":null
+  }
