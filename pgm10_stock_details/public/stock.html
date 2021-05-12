@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Stock Details</title>
+        <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>    
+    </head>
+    <body>
+        <center>
+            
+        <h1>Stock details</h1>
+        <div class="card" style="width: 10;">
+            <table id="table" border="1">
+                <tr>
+                    <th style="width: 90px; background-color: black; color: white;">Date</th>
+                    <th style="width: 120px">Total current liabilities</th>
+                    <th style="width: 120px; background-color: black; color: white;">Receivables</th>
+                    <th style="width: 120px">Net Debt</th>
+                    <th style="width: 120px; background-color: black; color: white;">Total shareholders equity</th>                  
+                </tr>
+            </table>
+        </div>
+        </center>
+    </body>
+    <script>
+        window.addEventListener('DOMContentLoaded',(event) => {
+            fetch("https://financialmodelingprep.com/api/v3/financials/balance-sheet-statement/AAPL?period=quarter&apikey=demo")
+
+            .then(response => response.json())
+            .then(data => {
+                var dat =JSON.stringify(data);
+                dat1=data['financials'];
+
+                var bod =document.getElementById("body");
+
+                var tb=document.getElementById("table");
+
+                for(let i=0;i<dat1.length;i++)
+                {
+                    var tr =document.createElement('tr');
+                    var td=document.createElement('td');
+
+                    td.innerHTML=dat1[i].date;
+                    // tr.style("background-color:black")
+                    tr.appendChild(td);
+                    tb.appendChild(tr);
+
+                    var td=document.createElement('td');
+                    td.innerHTML=dat1[i]["Total current liabilities"];
+                    tr.appendChild(td);
+                    tb.appendChild(tr);
+
+                    var td=document.createElement('td');
+                    td.innerHTML=dat1[i].Receivables;
+                   
+                    tr.appendChild(td);
+                    tb.appendChild(tr);
+
+
+                    var td=document.createElement('td');
+                    td.innerHTML=dat1[i]["Net Debt"];
+                    tr.appendChild(td);
+                    tb.appendChild(tr);
+
+                    var td=document.createElement('td');
+                    td.innerHTML=dat1[i]["Total shareholders equity"];
+                    tr.appendChild(td);
+                    tb.appendChild(tr);
+
+                }
+            })
+            .catch(error => console.log('error',error));
+        });
+    </script>
+</html>
